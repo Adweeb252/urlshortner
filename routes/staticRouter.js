@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     urls: allUrl,
   });
 });
-router.get("/", (req, res) => {
+router.get("/signup", (req, res) => {
   res.render("Signup");
 });
 router.get("/login", (req, res) => {
