@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require("uuid");
 const { setUser } = require("../service/auth");
 async function handleUserSignup(req, res) {
   const { name, email, password } = req.body;
-  if (req.cookies.uid) {
+  if (req.cookies?.uid) {
     return res.redirect("/");
   }
   await User.create({

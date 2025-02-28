@@ -7,8 +7,8 @@ const { connectToDB } = require("./connection");
 const ejs = require("ejs");
 const path = require("path");
 const URL = require("./models/url");
-const cookieParser = require("cookie-parser");
 const { restrictToLoggedInUser } = require("./middlewares/auth");
+const cookieParser = require("cookie-parser");
 
 const PORT = 8001;
 app.use(express.json());

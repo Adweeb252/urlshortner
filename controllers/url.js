@@ -10,6 +10,7 @@ async function createShortUrl(req, res) {
     shortId: shortId,
     redirectedUrl: req.body.url,
     visitHistory: [],
+    createdBy: req.user._id,
   });
   return res.render("Home", {
     id: shortId,
@@ -18,7 +19,6 @@ async function createShortUrl(req, res) {
 
 async function handleRedirect(req, res) {
   const shortId = req.params.shortId;
-  console.log("Searching for shortId:", shortId); // Debug log
 
   const url = await URL.findOneAndUpdate(
     {
