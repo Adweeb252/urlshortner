@@ -7,7 +7,7 @@ const { connectToDB } = require("./connection");
 const ejs = require("ejs");
 const path = require("path");
 const URL = require("./models/url");
-const { restrictToLoggedInUser } = require("./middlewares/auth");
+const { restrictToLoggedInUser, checkAuth } = require("./middlewares/auth");
 const cookieParser = require("cookie-parser");
 
 const PORT = 8001;
@@ -23,6 +23,6 @@ connectToDB("mongodb://127.0.0.1:27017/short-url").then(() =>
 
 app.use("/url", restrictToLoggedInUser, urlRouter);
 app.use("/user", userRoute);
-app.use("/", staticRoute);
+app.use("/", checkAuth, staticRoute);
 
 app.listen(PORT, () => console.log(`Server is started at PORT:${PORT}`));

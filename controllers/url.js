@@ -34,8 +34,6 @@ async function handleRedirect(req, res) {
     { new: true }
   );
 
-  console.log("Found URL:", url); // Debug log
-
   if (!url) {
     return res.status(404).json({ error: "url not found" });
   }
